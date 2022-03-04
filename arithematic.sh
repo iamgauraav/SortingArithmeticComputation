@@ -1,21 +1,38 @@
 #!/bin/bash -x
 
-read -p "Enter a number A :- " a
-read -p "Enter a number B :- " b
-read -p "Enter a number C :- " c
+read -p "Enter first number:" a
+read -p "Enter second number:" b
+read -p "Enter third number:" c
 
 declare -A dictionary
-array=();
 
-result1=$(($a + $b * $c))
-result2=$(($a * $b + $c))
-result3=$(($c + $a / $b))
-result4=$(($a % $b + $c))
+dictionary["result1"]="$(( $a + $b * $c ))"
+dictionary["result2"]="$(( $a * $b + $c ))"
+dictionary["result3"]="$(( $c + $a / $b ))"
+dictionary["result4"]="$(( $a % $b / $c ))"
 
-dictionary[value1]=$result1
-dictionary[value2]=$result2
-dictionary[value3]=$result3
-dictionary[value4]=$result4
+function descending() {
+	val=("$@")
+	array=();
 
-array+=${dictionary[@]}
-echo ${array[@]}
+	for values in "${val[@]}"
+	do
+		array+=("${values[@]}")
+	done
+	echo "Array values before sorting:: ${array[@]}" 
+	
+	for (( i=0; i<${#array[@]}; i++ ))
+	do 
+		for (( j=$i; j<${#array[@]}; j++ )) 
+		do 
+			if [ ${array[$i]} -lt ${array[$j]} ]
+		 	then
+				temp=${array[$i]} 
+				array[$i]=${array[$j]} 
+				array[$j]=$temp
+			fi
+		done
+	done
+ echo "Array values after sorting:: ${array[@]}"
+}
+echo $(descending "${dictionary[@]}")
