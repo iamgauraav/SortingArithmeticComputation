@@ -11,7 +11,7 @@ dictionary["result2"]="$(( $a * $b + $c ))"
 dictionary["result3"]="$(( $c + $a / $b ))"
 dictionary["result4"]="$(( $a % $b / $c ))"
 
-function descending() {
+function ascending() {
 	val=("$@")
 	array=();
 
@@ -25,7 +25,7 @@ function descending() {
 	do 
 		for (( j=$i; j<${#array[@]}; j++ )) 
 		do 
-			if [ ${array[$i]} -lt ${array[$j]} ]
+			if [ ${array[$i]} -gt ${array[$j]} ]
 		 	then
 				temp=${array[$i]} 
 				array[$i]=${array[$j]} 
@@ -35,4 +35,4 @@ function descending() {
 	done
  echo "Array values after sorting:: ${array[@]}"
 }
-echo $(descending "${dictionary[@]}")
+echo $(ascending "${dictionary[@]}")
