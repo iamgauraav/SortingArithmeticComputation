@@ -1,3 +1,9 @@
-#!/bin/bash -x 
+#!/bin/bash -x
 
-echo "Welcome to Arithmetic Computation and sorting program"
+read -p "Enter a number A :- " a
+read -p "Enter a number B :- " b
+read -p "Enter a number C :- " c
+
+echo "$a,$b,$c"
+
+
