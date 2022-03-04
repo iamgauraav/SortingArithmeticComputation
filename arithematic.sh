@@ -1,3 +1,3 @@
 #!/bin/bash -x 
 
-echo "Welcome to Arithmetic Coputation and sorting program"
+echo "Welcome to Arithmetic Computation and sorting program"
